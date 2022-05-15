@@ -33,8 +33,8 @@ return  (
         getRowId={(row) => row._id}
         rows={data}
         columns={columns}
-        pageSize={25}
-        rowsPerPageOptions={[25]}
+        pageSize={20}
+        rowsPerPageOptions={[20]}
         checkboxSelection
         sx={{background: handleStyle, color: handleTextColor}}
         
