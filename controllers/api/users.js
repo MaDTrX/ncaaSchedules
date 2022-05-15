@@ -9,8 +9,6 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-    console.log('hitting')
-  console.log('req.user', req.user);
   res.json(req.exp);
 }
 
@@ -28,7 +26,6 @@ async function login(req, res) {
 
 
 
-console.log('test 3000010')
 async function create(req, res) {
   try {
     const user = await User.create(req.body);
