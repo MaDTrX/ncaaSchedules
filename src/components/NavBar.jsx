@@ -9,6 +9,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Switch from '@mui/material/Switch';
+import axios from 'axios'
 
 import SignUpForm from "./SignUpForm"
 import LoginForm from "./LoginForm"
@@ -61,17 +62,14 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     const allConf = fcsConferences.concat(fbsConferences)
     allConf.forEach(async (conf) => {
       if (evt.target.value === conf) {
-        // console.log(evt.target.value)
-        const res = await fetch('https://ncaaschedulesapi.herokuapp.com/' + subDivision + '/' + evt.target.value, fetchAuth)
-        const data = await res.json()
-        console.log(data)
-        // setNavState(true)
+        const res = await axios.get('https://ncaaschedulesapi.herokuapp.com/' + subDivision + '/' + evt.target.value, fetchAuth)
+        const data = res.data
         setAccordion(data)
       }
       if (!allConf.includes(evt.target.value)) {
         setNavState(false)
-        const res = await fetch('https://ncaaschedulesapi.herokuapp.com/comp/' + evt.target.value, fetchAuth)
-        const data = await res.json()
+        const res = await axios.get('https://ncaaschedulesapi.herokuapp.com/comp/' + evt.target.value, fetchAuth)
+        const data = res.data
         setData(data)
       }
     })
