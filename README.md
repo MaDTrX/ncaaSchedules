@@ -1,7 +1,7 @@
 # ncaaSchedulesAPI
 
 ## Description
- - Ncaa Schedules  aims to be the one stop shop to follow all ncaa sports
+ - Ncaa Schedules aims to be the one stop shop to follow all ncaa sports
  - Getting accurate and always up to date 
  - beta version (football only)
  
@@ -16,7 +16,7 @@
  - https://ncaaschedules.herokuapp.com/   
  
 ## Future updates
--fan base conditional styling 
+- fan base conditional styling 
 
 - distance Matrix API
 
