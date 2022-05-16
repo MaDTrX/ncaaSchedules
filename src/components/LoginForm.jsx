@@ -41,6 +41,7 @@ export default function LoginForm({ setUser }) {
             required={true}
             fullWidth={true}
             margin="normal"
+            style={{background: 'rgba(146, 154, 171, 0.5)'}}
             />
           <TextField
             id="outlined-name"
@@ -52,6 +53,8 @@ export default function LoginForm({ setUser }) {
             required={true}
             fullWidth={true}
             margin="normal"
+            style={{background: 'rgba(146, 154, 171, 0.5)'}}
+            
           />
            <Button type='submit' variant="contained">LOGIN</Button>
         </form>

@@ -20,12 +20,12 @@ const fbsConferences = ['Conference USA', 'Sun Belt Conference', 'American Athle
 
 const fetchAuth = {
   method: "GET",
-  headers : { 
+  headers: {
     'Accept': 'application/json',
-   }
   }
+}
 
-export default function NavBar({ user, hide, setUser, setData, checked, handleChange}) {
+export default function NavBar({ user, hide, setUser, setData, checked, handleChange }) {
   const [accordion, setAccordion] = React.useState([])
   const [credentials, setCredentials] = React.useState(null)
   const [subDivision, setSubDivision] = React.useState('')
@@ -45,11 +45,11 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
   }
 
   function handleStyle() {
-    if (checked === true) {
-      return 'black'
+    if (checked) {
+      return 'rgb(57, 62, 70)'
     }
     else {
-      return 'white'
+      return 'rgb(232, 240, 242)'
     }
   }
 
@@ -91,7 +91,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     }
   }
   return (
-    <Accordion sx={{background: handleStyle}} expanded={navState} onClick={handleAccordion}>
+    <Accordion sx={{ background: handleStyle, position: 'fixed', top: '0', width: '100%', zIndex: 3 }} expanded={navState} onClick={handleAccordion}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -99,15 +99,28 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
       >
         {user ?
           <>
-            <Switch
-              checked={checked}
-              onChange={handleChange}
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
-            <Button onClick={handleAccordion} variant="text" value="fbs">FBS</Button>
-            <Button onClick={handleAccordion} variant="text" value="fcs">FCS</Button>
-            <Button onClick={handleAccordion} variant="text" value="account">ACCOUNT</Button>
-            <Button onClick={handleLogOut} variant="text" value="account">LOGOUT</Button>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+              <Grid item xs={6}>
+                <Switch
+                  checked={checked}
+                  onChange={handleChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Button onClick={handleAccordion} variant="text" value="account"><img src={require('../img/shorts-logo.png')} alt='SHORTS-TRAVEL' width='30px' height='30px'></img></Button>
+              </Grid>
+              <Grid 
+                item xs={6} 
+                container
+                direction="row"
+                justifyContent="flex-end"
+                alignItems="center"
+              >
+                <Button onClick={handleAccordion} variant="text" value="fbs">FBS</Button>
+                <Button onClick={handleAccordion} variant="text" value="fcs">FCS</Button>
+                <Button onClick={handleLogOut} variant="text" value="account">LOGOUT</Button>
+
+              </Grid>
+            </Grid>
           </>
           :
           <>
@@ -122,7 +135,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
           </>
         }
       </AccordionSummary>
-      <Accordion sx={{background: handleStyle}}>
+      <Accordion sx={{ background: handleStyle }}>
         <AccordionDetails>
           <ButtonGroup fullWidth={true} variant="contained" aria-label="outlined primary button group">
             <Grid

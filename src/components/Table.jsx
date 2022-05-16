@@ -2,10 +2,11 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-  { field: 'schoolName', headerName: 'schoolName', width: 200 },
-  { field: 'compEventName', headerName: 'compEventName', width: 200 },
-  { field: 'compEventDate', headerName: 'compEventDate', width: 200 },
-  { field: 'compEventTime', headerName: 'compEventTime', width: 200 },
+  { field: 'compEventName', headerName: 'SCHOOL', width: 200 },
+  { field: 'isNeutral', headerName: '', width: 50},
+  { field: 'schoolName', headerName: 'EVENT', width: 200 },
+  { field: 'compEventDate', headerName: 'DATE', width: 200 },
+  { field: 'compEventTime', headerName: 'TIME', width: 200 },
 ];
 
 
@@ -13,30 +14,29 @@ export default function DataTable({data, checked,}) {
 
   function handleStyle() {
     if (checked) {
-      return 'black'
+      return 'rgb(247, 247, 247)'
     }
     else {
-      return 'white'
+      return 'rgb(232, 240, 242)'
     }
   }
   function handleTextColor() {
     if (checked) {
-      return 'white'
+      return 'rgb(57, 62, 70)'
     } else {
-      return 'black'
+      return 'rgb(57, 62, 70)'
     }
   }
 
 return  (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '80%' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={data}
         columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-        sx={{background: handleStyle, color: handleTextColor, width:'100%', height: '90vh'}}
+        pageSize={12}
+        rowsPerPageOptions={[12]}
+        sx={{background: handleStyle, color: handleTextColor, width:'100%', height: '80vh'}}
       />
     </div>
   );
