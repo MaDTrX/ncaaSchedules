@@ -17,7 +17,7 @@ export default function App() {
   }
   React.useEffect(() => {
     async function getFcs() {
-      const res = await fetch('http://ncaaschedules.herokuapp.com/fcs')
+      const res = await fetch('https://ncaaschedules.herokuapp.com/fcs')
       const data = await res.json()
       setData(data)
     }

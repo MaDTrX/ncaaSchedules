@@ -55,14 +55,14 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     allConf.forEach(async (conf) => {
       if (evt.target.value === conf) {
         // console.log(evt.target.value)
-        const res = await fetch('http://ncaaschedules.herokuapp.com/' + subDivision + '/' + evt.target.value)
+        const res = await fetch('https://ncaaschedules.herokuapp.com/' + subDivision + '/' + evt.target.value)
         const data = await res.json()
         // setNavState(true)
         setAccordion(data)
       }
       if (!allConf.includes(evt.target.value)) {
         setNavState(false)
-        const res = await fetch('http://ncaaschedules.herokuapp.com/comp/' + evt.target.value)
+        const res = await fetch('https://ncaaschedules.herokuapp.com/comp/' + evt.target.value)
         const data = await res.json()
         setData(data)
       }
