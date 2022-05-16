@@ -20,7 +20,6 @@ const fbsConferences = ['Conference USA', 'Sun Belt Conference', 'American Athle
 const fetchAuth = {
   method: "GET",
   headers : { 
-    'Content-Type': 'application/json',
     'Accept': 'application/json',
    }
   }

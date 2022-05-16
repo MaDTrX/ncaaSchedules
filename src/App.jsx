@@ -6,11 +6,11 @@ import Table from './components/Table';
 const fetchAuth = {
   method: "GET",
   headers : { 
-    'Content-Type': 'application/json',
+
     'Accept': 'application/json',
    }
   }
-  
+
 export default function App() {
   const [user, setUser] = React.useState(getUser());
   const [data, setData] = React.useState([])
