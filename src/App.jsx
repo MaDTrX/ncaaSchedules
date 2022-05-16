@@ -4,9 +4,8 @@ import NavBar from './components/NavBar';
 import Table from './components/Table';
 
 const fetchAuth = {
-  method: "GET",
+  method: "get",
   headers : { 
-
     'Accept': 'application/json',
    }
   }
