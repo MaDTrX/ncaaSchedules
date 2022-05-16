@@ -16,6 +16,8 @@
  - https://ncaaschedules.herokuapp.com/   
  
 ## Future updates
+-fan base conditional styling 
+
 - distance Matrix API
 
 - client business logic
