@@ -20,9 +20,11 @@
 
 - distance Matrix API
 
-- client business logic
+- client & business logic
 
-- admin portal
+- admin portal 
+
+- statitistic calculationa
 
 - data visualizations
 
