@@ -22,7 +22,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
   const [credentials, setCredentials] = React.useState(null)
   const [subDivision, setSubDivision] = React.useState('')
   const [navState, setNavState] = React.useState(false)
-  const accordionNav = accordion.map(el => <Grid item xs={6}><Button onClick={handleNav} value={el} fullWidth={true}>{el}</Button></Grid>)
+  const accordionNav = accordion.map(el => <Grid item xs={12} md={12} lg={6}><Button onClick={handleNav} value={el} fullWidth={true}>{el}</Button></Grid>)
 
   React.useEffect(() => {
     if (!hide) setNavState(false)
@@ -44,7 +44,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
       return 'white'
     }
   }
-  
+
   function handleLogOut() {
     userService.logOut();
     setUser(null);
@@ -62,7 +62,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
       }
       if (!allConf.includes(evt.target.value)) {
         setNavState(false)
-        const res = await fetch('http://ncaaschedules.herokuapp.com/' + subDivision + '/comp/' + evt.target.value)
+        const res = await fetch('http://ncaaschedules.herokuapp.com/comp/' + evt.target.value)
         const data = await res.json()
         setData(data)
       }
@@ -116,7 +116,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
           </>
         }
       </AccordionSummary>
-      <Accordion>
+      <Accordion sx={{background: handleStyle}}>
         <AccordionDetails>
           <ButtonGroup fullWidth={true} variant="contained" aria-label="outlined primary button group">
             <Grid

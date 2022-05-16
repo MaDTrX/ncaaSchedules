@@ -28,16 +28,15 @@ export default function DataTable({data, checked,}) {
   }
 
 return  (
-    <div style={{ height: '80vh', width: '100%' }}>
+    <div style={{ width: '100%' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={data}
         columns={columns}
-        pageSize={20}
-        rowsPerPageOptions={[20]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         checkboxSelection
-        sx={{background: handleStyle, color: handleTextColor}}
-        
+        sx={{background: handleStyle, color: handleTextColor, width:'100%', height: '90vh'}}
       />
     </div>
   );
