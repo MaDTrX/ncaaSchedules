@@ -17,6 +17,14 @@ import LoginForm from "./LoginForm"
 const fcsConferences = ['Ohio Valley Conference', 'Northeast Conference', 'Southern Conference', 'Pioneer Football League', 'Big South Conference', 'Southwestern Athletic Conf.', 'Colonial Athletic Association', 'ASUN Conference', 'Big Sky Conference', 'Patriot League', 'Southland Conference', 'Independent', 'The Ivy League']
 const fbsConferences = ['Conference USA', 'Sun Belt Conference', 'American Athletic Conference', 'Pac-12 Conference', 'Mid-American Conference', 'Mountain West Conference', 'Big 12 Conference', 'Big Ten Conference', 'Independent', 'Atlantic Coast Conference']
 
+const fetchAuth = {
+  method: "GET",
+  headers : { 
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+   }
+  }
+
 export default function NavBar({ user, hide, setUser, setData, checked, handleChange}) {
   const [accordion, setAccordion] = React.useState([])
   const [credentials, setCredentials] = React.useState(null)
@@ -55,14 +63,14 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     allConf.forEach(async (conf) => {
       if (evt.target.value === conf) {
         // console.log(evt.target.value)
-        const res = await fetch('https://ncaaschedules.herokuapp.com/' + subDivision + '/' + evt.target.value)
+        const res = await fetch('https://ncaaschedules.herokuapp.com/' + subDivision + '/' + evt.target.value, fetchAuth)
         const data = await res.json()
         // setNavState(true)
         setAccordion(data)
       }
       if (!allConf.includes(evt.target.value)) {
         setNavState(false)
-        const res = await fetch('https://ncaaschedules.herokuapp.com/comp/' + evt.target.value)
+        const res = await fetch('https://ncaaschedules.herokuapp.com/comp/' + evt.target.value, fetchAuth)
         const data = await res.json()
         setData(data)
       }

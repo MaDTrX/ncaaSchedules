@@ -3,11 +3,21 @@ import { getUser } from './utilities/users-service';
 import NavBar from './components/NavBar';
 import Table from './components/Table';
 
+const fetchAuth = {
+  method: "GET",
+  headers : { 
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+   }
+  }
+  
 export default function App() {
   const [user, setUser] = React.useState(getUser());
   const [data, setData] = React.useState([])
   const [hide, setHide] = React.useState()
   const [checked, setChecked] = React.useState(false)
+    
+  
 
   function handleHide (evt) {
     setHide(evt.target.value)
@@ -17,7 +27,7 @@ export default function App() {
   }
   React.useEffect(() => {
     async function getFcs() {
-      const res = await fetch('https://ncaaschedules.herokuapp.com/fcs')
+      const res = await fetch('https://ncaaschedules.herokuapp.com/fcs', fetchAuth)
       const data = await res.json()
       setData(data)
     }
