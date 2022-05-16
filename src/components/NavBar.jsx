@@ -64,7 +64,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
         // console.log(evt.target.value)
         const res = await fetch('https://ncaaschedulesapi.herokuapp.com/' + subDivision + '/' + evt.target.value, fetchAuth)
         const data = await res.json()
-        // console.log(data)
+        console.log(data)
         // setNavState(true)
         setAccordion(data)
       }
