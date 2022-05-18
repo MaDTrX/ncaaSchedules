@@ -1,5 +1,4 @@
-# ncaaSchedulesAPI
-
+# ncaaSchedules
 ## Description
  - Ncaa Schedules aims to be the one stop shop to follow all ncaa sports
  - Getting accurate and always up to date 
