@@ -1,4 +1,6 @@
 
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import * as React from 'react'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -25,7 +27,7 @@ const fetchAuth = {
   }
 }
 
-export default function NavBar({ user, hide, setUser, setData, checked, handleChange }) {
+export default function NavBar({ user, hide, setUser, setData, checked, handleChange, schools, home }) {
   const [accordion, setAccordion] = React.useState([])
   const [credentials, setCredentials] = React.useState(null)
   const [subDivision, setSubDivision] = React.useState('')
@@ -57,6 +59,14 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     userService.logOut();
     setUser(null);
   }
+  async function handleSearch(evt){
+    evt.preventDefault()
+    const res = await axios.get('https://ncaaschedulesapi.herokuapp.com/comp/' + evt.target[0].value, fetchAuth)
+        const data = res.data
+        setData(data)
+      }
+
+
 
   async function handleNav(evt) {
     const allConf = fcsConferences.concat(fbsConferences)
@@ -75,6 +85,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     })
   }
 
+
   function handleAccordion(evt) {
     if (evt.target.value === 'fbs') {
       setNavState(true)
@@ -89,7 +100,11 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     } else if (evt.target.value === 'logIn' || evt.target.value === 'signUp') {
       setNavState(true)
     }
+    //  else if (evt.target.value === 'home' ) {
+    //   home(!home)
+    // }
   }
+
   return (
     <Accordion sx={{ background: handleStyle, position: 'fixed', top: '0', width: '100%', zIndex: 3 }} expanded={navState} onClick={handleAccordion}>
       <AccordionSummary
@@ -100,16 +115,24 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
         {user ?
           <>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-              <Grid item xs={6}>
+              <Grid item xs={6} container direction="row">
                 <Switch
                   checked={checked}
                   onChange={handleChange}
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
-                <Button onClick={handleAccordion} variant="text" value="account"><img src={require('../img/shorts-logo.png')} alt='SHORTS-TRAVEL' width='30px' height='30px'></img></Button>
+                <Button onClick={handleAccordion} variant="text" value="home"><img src={require('../img/shorts-logo.png')} alt='SHORTS-TRAVEL' width='30px' height='30px'></img></Button>
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={schools}
+                  size='small'
+                  sx={{ width: 300}}
+                  renderInput={(params) =><form style={{display: "flex"}} onSubmit={handleSearch} autoComplete="off" > <TextField {...params} label="Search Schools" /> <button type='submit'>Go</button></form>}
+                />
               </Grid>
-              <Grid 
-                item xs={6} 
+              <Grid
+                item xs={6}
                 container
                 direction="row"
                 justifyContent="flex-end"

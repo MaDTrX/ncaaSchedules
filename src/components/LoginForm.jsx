@@ -58,6 +58,7 @@ export default function LoginForm({ setUser }) {
           />
            <Button type='submit' variant="contained">LOGIN</Button>
         </form>
+           <p>{error}</p>
       </Grid>
   );
 }

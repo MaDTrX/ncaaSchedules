@@ -85,7 +85,7 @@ export default class SignUpForm extends Component {
           id="outlined-name"
           label="Confirm Password"
           type="password" 
-          name="confrim" 
+          name="confirm" 
           value={this.state.confirm}
           onChange={this.handleChange} 
           required={true}
@@ -93,6 +93,7 @@ export default class SignUpForm extends Component {
           margin="normal"
         />
         <Button type='submit' disabled={disable} variant="contained">SIGN UP</Button>
+        <p>{this.state.error}</p>
       </form>
       </Grid>
  
